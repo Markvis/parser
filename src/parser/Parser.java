@@ -168,6 +168,7 @@ public class Parser {
         } 
         else if(isNextTok(Tokens.FLOAT)){
             t = new FloatTypeTree();
+            scan();
         }else {
             expect(Tokens.BOOLean);
             t = new BoolTypeTree();
