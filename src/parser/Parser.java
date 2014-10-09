@@ -161,6 +161,7 @@ public class Parser {
 /** <pre>
  *  type  ->  'int'
  *  type  ->  'bool'
+ *  tyoe  ->  'ScientificN'
  *  type  ->  'float'
  *  </pre>
  *  @return either the intType or boolType tree
@@ -175,7 +176,12 @@ public class Parser {
         else if(isNextTok(Tokens.FLOAT)){
             t = new FloatTypeTree();
             scan();
-        }else {
+        }
+        else if(isNextTok(Tokens.ScientificN)){
+            t = new ScientificNTypeTree();
+            scan();
+        }
+        else {
             expect(Tokens.BOOLean);
             t = new BoolTypeTree();
         }
@@ -345,6 +351,11 @@ public class Parser {
         }
         if(isNextTok(Tokens.Float)){
             t = new FloatTree(currentToken);
+            scan();
+            return t;
+        }
+        if(isNextTok(Tokens.ScientificN)){
+            t = new ScientificNTree(currentToken);
             scan();
             return t;
         }
