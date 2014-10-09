@@ -85,7 +85,7 @@ public class PrintVisitor extends ASTVisitor {
     public Object visitFloatTypeTree(AST t) { print("FloatType",t);  return null; }
     public Object visitScientificNTypeTree(AST t) {print("ScientificNType",t);  return null; }
     
-    public Object visitNegateTree(AST t) {print("Negate: "+((NegateTree)t).getSymbol().toString(),t);  return null;}
+    //public Object visitNegateTree(AST t) {print("Negate: "+((NegateTree)t).getSymbol().toString(),t);  return null;}
     public Object visitFloatTree(AST t) {print("Float: "+((FloatTree)t).getSymbol().toString(),t);  return null;}
     public Object visitScientificNTree(AST t) {print("ScientificN: "+((ScientificNTree)t).getSymbol().toString(),t);  return null;}
 }
