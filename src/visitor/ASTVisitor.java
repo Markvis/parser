@@ -41,4 +41,7 @@ public abstract class ASTVisitor {
     public abstract Object visitMultOpTree(AST t);
     
     public abstract Object visitFloatTree(AST t);
+    public abstract Object visitFloatTypeTree(AST t);
+    public abstract Object visitNegateTree(AST t);
+    public abstract Object visitDoTree(AST t);
 }

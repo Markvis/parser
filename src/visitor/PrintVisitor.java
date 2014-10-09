@@ -81,5 +81,9 @@ public class PrintVisitor extends ASTVisitor {
     public Object visitAddOpTree(AST t) { print("AddOp: "+((AddOpTree)t).getSymbol().toString(),t);  return null; }
     public Object visitMultOpTree(AST t) { print("MultOp: "+((MultOpTree)t).getSymbol().toString(),t);  return null; }
 
+    public Object visitDoTree(AST t) {print("Do",t);  return null;};
+    public Object visitFloatTypeTree(AST t) { print("FloatType",t);  return null; }
+    
+    public Object visitNegateTree(AST t) {print("Negate: "+((NegateTree)t).getSymbol().toString(),t);  return null;}
     public Object visitFloatTree(AST t) {print("Float: "+((FloatTree)t).getSymbol().toString(),t);  return null;}
 }

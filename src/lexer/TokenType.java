@@ -44,7 +44,7 @@ public class TokenType {
      tokens.put(Tokens.Char, Symbol.symbol("<char>",Tokens.Char));
      tokens.put(Tokens.CHAR, Symbol.symbol("char",Tokens.CHAR));
      tokens.put(Tokens.Error, Symbol.symbol("error",Tokens.Error));
-     tokens.put(Tokens.DO, Symbol.symbol("do",Tokens.DO));
+     tokens.put(Tokens.Do, Symbol.symbol("do",Tokens.Do));
      tokens.put(Tokens.Negate, Symbol.symbol("!",Tokens.Negate));
    }
 }

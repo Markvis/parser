@@ -12,5 +12,5 @@ public enum Tokens {
     Less,LessEqual,Plus,Minus,Or,
     And,Multiply,Divide,Comment,Float,
     FLOAT,ScientificN,Greater,GreaterEqual,Char,
-    CHAR,Error,DO,Negate
+    CHAR,Error,Do,Negate
 }

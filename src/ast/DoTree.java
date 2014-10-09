@@ -11,11 +11,11 @@ import visitor.*;
  *
  * @author markfavis
  */
-public class FloatTypeTree extends AST {
-    public FloatTypeTree() {
+public class DoTree extends AST {
+    public DoTree() {
     }
 
     public Object accept(ASTVisitor v) {
-        return v.visitFloatTypeTree(this);
+        return v.visitDoTree(this);
     }
 }

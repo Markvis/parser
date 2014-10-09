@@ -5,17 +5,26 @@
  */
 package ast;
 
+import lexer.Symbol;
+import lexer.Token;
 import visitor.*;
-
 /**
  *
  * @author markfavis
  */
-public class FloatTypeTree extends AST {
-    public FloatTypeTree() {
+public class NegateTree extends AST {
+    private Symbol symbol;
+    
+    public NegateTree(Token tok) {
+        this.symbol = tok.getSymbol();
     }
 
     public Object accept(ASTVisitor v) {
-        return v.visitFloatTypeTree(this);
+        return v.visitNegateTree(this);
     }
+
+    public Symbol getSymbol() {
+        return symbol;
+    }
+    
 }

@@ -34,5 +34,5 @@ GreaterEqual >=
 Char <char>
 CHAR char
 Error error
-DO do
+Do do
 Negate !

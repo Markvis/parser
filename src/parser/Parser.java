@@ -19,6 +19,8 @@ import ast.*;
  *  
  *  TYPE  ->  ‘int’
  *        ->  ‘boolean’
+ *        ->  'float'
+ *        ->  'char'
  *
  *  FUNHEAD  -> '(' (D list ',')? ')'  ==> formals<br>
  *
@@ -26,7 +28,6 @@ import ast.*;
  *    -> ‘while’ E BLOCK               ==> while
  *    -> ‘return’ E                    ==> return
  *    -> BLOCK
- *    -> NAME ‘=’ E                    ==> assign<br>
  *  
  *  E -> SE
  *    -> SE ‘==’ SE   ==> =
@@ -121,12 +122,16 @@ public class Parser {
         while (true) {  // get decls
            try {
             t.addKid(rDecl());
-           } catch (SyntaxError e) { break; }
+           } catch (SyntaxError e) { 
+               break; 
+           }
         }
         while (true) {  // get statements
            try {
             t.addKid(rStatement());
-           } catch (SyntaxError e) { break; }
+           } catch (SyntaxError e) { 
+               break; 
+           }
         }
         expect(Tokens.RightBrace);
         return t;
@@ -156,6 +161,7 @@ public class Parser {
 /** <pre>
  *  type  ->  'int'
  *  type  ->  'bool'
+ *  type  ->  'float'
  *  </pre>
  *  @return either the intType or boolType tree
  *  @exception SyntaxError - thrown for any syntax error
@@ -227,6 +233,12 @@ public class Parser {
             scan();
             t = new WhileTree();
             t.addKid(rExpr());
+            t.addKid(rBlock());
+            return t;
+        }
+        if (isNextTok(Tokens.Do)) {
+            scan();
+            t = new DoTree();
             t.addKid(rBlock());
             return t;
         }
@@ -328,6 +340,11 @@ public class Parser {
         }
         if (isNextTok(Tokens.INTeger)) {  //  -> <int>
             t = new IntTree(currentToken);
+            scan();
+            return t;
+        }
+        if(isNextTok(Tokens.Float)){
+            t = new FloatTree(currentToken);
             scan();
             return t;
         }
