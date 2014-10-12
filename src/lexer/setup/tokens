@@ -35,4 +35,4 @@ Char <char>
 CHAR char
 Error error
 Do do
-Negate !
+Not !

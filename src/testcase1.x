@@ -6,7 +6,7 @@ float quotient ( float numerator, float denominator) {
 
 boolean condition
 
-condition = ! ! denominator == 0
+condition = !!denominator == 0
 
 if (condition) then { return 1.2e3}
 
