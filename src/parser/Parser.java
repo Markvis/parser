@@ -64,7 +64,7 @@ public class Parser {
     private EnumSet<Tokens> multiplyingOps
             = EnumSet.of(Tokens.Multiply, Tokens.Divide, Tokens.And);
     private EnumSet<Tokens> unaryOps
-            = EnumSet.of(Tokens.Not);
+            = EnumSet.of(Tokens.Not, Tokens.Minus);
 
     /**
      * Construct a new Parser;
@@ -252,6 +252,15 @@ public class Parser {
             t.addKid(rBlock());
             return t;
         }
+        // -> ‘if’ E ‘then’ BLOCK ==> if
+        if (isNextTok(Tokens.If)) {
+            scan();
+            t = new IfTree();
+            t.addKid(rExpr());
+            expect(Tokens.Then);
+            t.addKid(rBlock());
+            return t;
+        }
         if (isNextTok(Tokens.While)) {
             scan();
             t = new WhileTree();
@@ -259,6 +268,7 @@ public class Parser {
             t.addKid(rBlock());
             return t;
         }
+        // -> ‘do’ BLOCK ‘while’ E ==> repeat
         if (isNextTok(Tokens.Do)) {
             scan();
             t = new DoTree();
